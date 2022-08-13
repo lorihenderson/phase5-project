@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module TriviaApp
   class Application < Rails::Application
+    # Adding cookies and session middleware
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
@@ -18,5 +21,6 @@ module TriviaApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.api_only = true
   end
 end
