@@ -64,6 +64,10 @@ group :development do
   # gem "spring"
 end
 
+gem "faker"
+
+gem "active_model_serializers"
+
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"

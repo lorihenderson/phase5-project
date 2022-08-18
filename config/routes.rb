@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'sessions/click'
   # get 'sessions/create'
   # get 'sessions/destroy'
+  delete "/logout", to: "sessions#destroy"
 
   resources :favorites
   resources :categories
