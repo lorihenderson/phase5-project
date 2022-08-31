@@ -66,6 +66,8 @@ end
 
 gem "faker"
 
+gem 'rack-cors'
+
 gem "active_model_serializers"
 
 group :test do

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
     def index
         render json: Post.all
     end
@@ -8,7 +9,7 @@ class PostsController < ApplicationController
     end
 
     def create
-        post = Post.create!(post_params)
+        post = Post.create!(post_params_with_user_id)
         render json: post, status: :created
     end
 
@@ -20,6 +21,11 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.permit(:user_id, :category_id)
+        params.permit(:category_id, :fact)
     end
+
+    def post_params_with_user_id
+        post_params.merge(user_id: session[:user_id])
+    end
+
 end

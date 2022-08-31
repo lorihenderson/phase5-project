@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  # skip_before_action :authenticate_user
+  skip_before_action :authorize, only: [:create]
 
   def click
     session[:click] ||= 0
@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   # post '/login'
   def create
-    user = User.find_by_username(params[:username])
+    user = User.find_by(username: params[:username])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
       render json: user, status: :ok
@@ -20,6 +20,5 @@ class SessionsController < ApplicationController
   # delete '/logout'
   def destroy
     session.delete :user_id
-    head :no_content
   end
 end
