@@ -1,23 +1,43 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import './App.css';
 
+import Home from './components/Home';
+import LoginForm from './components/LoginForm';
+import NavBar from './components/NavBar';
+import SignUpForm from './components/SignUpForm';
+import UserProfile from './components/UserProfile';
+import Card from './components/Card';
+
 function App() {
+
+  const [currentUser, setCurrentUser] = useState(false)
+
+  useEffect(() => {
+    fetch('/user_authorized')
+    .then((res) => res.json())
+    .then((user) => setCurrentUser(user))
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <BrowserRouter>
+      <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
+
+      <Routes>
+
+        <Route index path="/home" element={<Home currentUser={currentUser} />}  />
+
+        <Route path="/login" element={<LoginForm setCurrentUser={setCurrentUser} />} />
+
+        <Route path="/signup" element={<SignUpForm />}  />
+
+        <Route path="/profile" element={<UserProfile />} />
+        {/* <Card /> */}
+      </Routes>
+      </BrowserRouter>
+
     </div>
   );
 }
