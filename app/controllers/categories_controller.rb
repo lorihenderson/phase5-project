@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+    skip_before_action :user_authorized
+    
     def index
         render json: Category.all
     end
