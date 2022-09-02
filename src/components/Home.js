@@ -19,7 +19,7 @@ function Home({currentUser}) {
 
     fetch("/posts", {
       method: "POST",
-      mode: "no-cors",
+    //   mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
       },
@@ -34,9 +34,6 @@ function Home({currentUser}) {
     setFormData({ ...formData, [name]: value });
   };
 
-  // const allCats = categories.map( (category) => (<option>{category.topic}</option> ))
-
-  console.log(categories)
   return (
     <>
      { currentUser ?  <div>Welcome, {currentUser.username}!</div> : null }
@@ -49,8 +46,6 @@ function Home({currentUser}) {
               {category.topic}
             </option>
           ))}
-
-          {/* { categories.map( (allCats) => (<option>{allCats[category.topic]}</option>)) } edited? */}
         </select>
 
         <div className="fact-field">

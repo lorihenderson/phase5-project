@@ -24,7 +24,6 @@ function LoginForm({ setCurrentUser }) {
 
       fetch("/login", {
         method: "POST",
-        mode: "no-cors",
         headers: {
           "Content-Type": "application/json",
         },
