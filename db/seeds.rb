@@ -22,6 +22,7 @@ geography = Category.create(topic: "Geography")
 lit = Category.create(topic: "Literature")
 food_and_drink = Category.create(topic: "Food and Drink")
 
+# Post seeds
 f1 = Post.create(user_id: 37, category_id: 31, fact: "Hephaestus is the Greek god of sculpture.")
 
 # Examples:

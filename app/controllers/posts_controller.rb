@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
-    before_action :find_user, only: [:show]
-    skip_before_action :user_authorized
+    before_action :find_post, only: [:show]
 
     def index
         render json: Post.all
@@ -11,7 +10,11 @@ class PostsController < ApplicationController
     end
 
     def create
+        # if current_user
+        #     @post.user_id = current_user.id
+        # end
         post = Post.create!(post_params)
+        # session[:post_id] = post.id
         render json: post, status: :created
     end
 
@@ -27,6 +30,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.permit(:user_id, :category_id)
+        params.permit(:user_id, :category_id, :fact)
     end
 end
