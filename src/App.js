@@ -8,6 +8,7 @@ import NavBar from './components/NavBar';
 import SignUpForm from './components/SignUpForm';
 import UserProfile from './components/UserProfile';
 import Card from './components/Card';
+import Social from './components/Social';
 
 function App() {
 
@@ -26,6 +27,8 @@ function App() {
       <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
 
       <Routes>
+
+        <Route path="/" element={<Social />} />
 
         <Route index path="/home" element={<Home currentUser={currentUser} />}  />
 

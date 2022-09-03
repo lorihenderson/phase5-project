@@ -23,6 +23,9 @@ function NavBar({currentUser, setCurrentUser}) {
       <nav>
         <ul className='navbar'>
           <li>
+            <Link to='/'>Socials</Link>
+          </li>
+          <li>
             <Link to="/home">Home</Link>
           </li>
           <li>
