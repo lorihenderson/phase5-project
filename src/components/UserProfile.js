@@ -31,7 +31,7 @@ function UserProfile() {
       <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="bioField"> My bio </label>
         <br />
-        <input
+        <textarea
           text="text"
           className="user-trivia"
           type="text"

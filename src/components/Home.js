@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import RandomFacts from "./RandomFacts";
 
 function Home({currentUser}) {
   const [categories, setCategories] = useState([]);
@@ -66,6 +67,7 @@ function Home({currentUser}) {
           </button>
         </div>
       </form>
+      <RandomFacts />
     </>
   );
 }
