@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :favorites
   resources :categories
-  resources :posts, except: [:create]
+  resources :posts, except: [:create], dependent: :destroy
   resources :users, except: [:show, :create]
 
   get 'sessions/click'
