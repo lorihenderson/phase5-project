@@ -1,17 +1,19 @@
 class UsersController < ApplicationController
-    before_action :find_user, only: [:show, :update]
+    before_action :find_user, only: [:update]
+    skip_before_action :user_authorized, only: [:show, :create]
 
     def index
         render json: User.all
     end
 
     def show
-        render json: @user
+        render json: current_user, status: :ok
     end
 
     def create
         user = User.create!(user_params)
-        render json:  user, status: :created
+        session[:user_id] = user.id
+        render json: user, status: :created
     end
 
     def update

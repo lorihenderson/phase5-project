@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  # skip_before_action :authenticate_user
+  skip_before_action :user_authorized, only: [:create]
 
   def click
     session[:click] ||= 0
@@ -20,6 +20,5 @@ class SessionsController < ApplicationController
   # delete '/logout'
   def destroy
     session.delete :user_id
-    head :no_content
   end
 end
