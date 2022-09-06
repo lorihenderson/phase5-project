@@ -104,3 +104,11 @@ a {
 .menuNav li:first-child {
   margin-top: 7rem;
 }
+
+h4 {
+  position: static;
+  text-align: center;
+  margin: auto;
+  background-color: #bfe64a;
+  width: fit-content;
+}
