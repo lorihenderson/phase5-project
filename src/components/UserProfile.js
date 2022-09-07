@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import Card from './Card';
 
-function UserProfile() {
+function UserProfile({currentUser}) {
   const [userProfile, setUserProfile] = useState("");
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function UserProfile() {
     fetch("/profile", {
       method: "POST",
       headers: {
-        "Accept": "application/json",
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ userProfile }),
@@ -41,6 +41,11 @@ function UserProfile() {
 
   return (
     <>
+        <h2>Hello, {currentUser.username}!</h2>
+        <h3>First name: {currentUser.f_name}</h3>
+        <h3>Last name: {currentUser.l_name}</h3>
+        <h3>Bio: {currentUser.bio}</h3>
+        <h4>{currentUser.fact}</h4>
       <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="bioField"> My bio </label>
         <br />
@@ -51,8 +56,20 @@ function UserProfile() {
           onChange={handleChange}
         />
         <br />
-        <button>Submit bio</button>
+        <button type="submit">Submit bio</button>
       </form>
+      {/* <form className="form" onSubmit={handleSubmit}>
+        <label htmlFor="bioField"> Update bio </label>
+        <br />
+        <textarea
+          text="text"
+          className="user-trivia"
+          type="text"
+          onChange={handleUpdate}
+        />
+        <br />
+        <button type="submit">Update bio</button>
+      </form> */}
     </>
   );
 }

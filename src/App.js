@@ -36,7 +36,7 @@ function App() {
 
         <Route path="/signup" element={<SignUpForm />}  />
 
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/profile" element={<UserProfile currentUser={currentUser} />} />
         {/* <Card /> */}
       </Routes>
       </BrowserRouter>
