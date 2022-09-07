@@ -7,7 +7,6 @@ import LoginForm from './components/LoginForm';
 import NavBar from './components/NavBar';
 import SignUpForm from './components/SignUpForm';
 import UserProfile from './components/UserProfile';
-import Card from './components/Card';
 import Social from './components/Social';
 
 function App() {

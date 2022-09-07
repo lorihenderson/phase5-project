@@ -4,6 +4,7 @@ import RandomFacts from "./RandomFacts";
 function Home({currentUser}) {
   const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({ category_id: "", fact: "" });
+  const [allData, setAllData] = useState({ category_id: "", fact: "" , user_id: ""});
 
   const { category_id, fact } = formData;
 
@@ -15,12 +16,19 @@ function Home({currentUser}) {
       });
   }, []);
 
+  useEffect(() => {
+    fetch("/posts")
+    .then(res => res.json())
+    .then((data) => {
+      setAllData(data)
+    });
+  }, []);
+
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     fetch("/posts", {
       method: "POST",
-    //   mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
       },
@@ -52,6 +60,7 @@ function Home({currentUser}) {
         <div className="fact-field">
           <label htmlFor="factField"> Enter trivia fact: </label>
           <input
+            required
             type="text"
             className="form-control"
             id="factField"
