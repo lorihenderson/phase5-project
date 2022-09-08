@@ -10,17 +10,12 @@ class PostsController < ApplicationController
     end
 
     def create
-        # if current_user
-        #     @post.user_id = current_user.id
-        # end
-        post = Post.create!(post_params)
-        # session[:post_id] = post.id
+        post = Post.create!(post_params_with_user_id)
         render json: post, status: :created
     end
 
     def destroy
-        post.destroy
-        head :no_content
+       @post.destroy
     end
 
     private
@@ -30,6 +25,10 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.permit(:user_id, :category_id, :fact)
+        params.permit(:category_id, :fact)
+    end
+
+    def post_params_with_user_id
+        post_params.merge(user_id: session[:user_id])
     end
 end
