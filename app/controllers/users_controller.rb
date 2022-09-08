@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     end
 
     def update
-        @user.update!(user_params)
+        @user.update!(bio: params[:bio])
         render json: @user, status: :accepted
     end
 
@@ -28,6 +28,6 @@ class UsersController < ApplicationController
     end
 
     def find_user
-        @user = User.find(params[:id])
+        @user = User.find(session[:user_id])
     end
 end

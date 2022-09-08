@@ -1,0 +1,21 @@
+<p id="notice"> <%= notice %> </p>
+
+<p>
+    <strong> Fact </strong>
+    <%= @post.fact %>
+</p>
+
+<%= fav = current_user.favorites.find_by(post: @post) %>
+<%= if fav.nil? %>
+<form action="/favorites" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="favorite[post_id]" value="<%= @post.id %>">
+    <input type="submit" value="Favorite">
+</form>
+<%= else %>
+    <form action="<%= /favorite_path(fav) %>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="DELETE" >
+        <input type="submit" value="Unfavorite">
+    </form>
+<%= end %>

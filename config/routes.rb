@@ -1,16 +1,21 @@
 Rails.application.routes.draw do
 
-  resources :favorites
+  resources :favorites, only: [:create, :destroy]
   resources :categories
-  resources :posts, except: [:create], dependent: :destroy
+  resources :posts, except: [:create, :destroy]
   resources :users, except: [:show, :create]
 
   get 'sessions/click'
   get '/user_authorized', to: 'users#show'
   post '/signup', to: 'users#create'
   post '/posts', to: 'posts#create'
+  delete '/posts/:id', to: 'posts#destroy'
   post '/login', to: 'sessions#create'
   delete "/logout", to: "sessions#destroy"
+  get '/profile', to: 'users#show'
+  post '/profile', to: 'users#create'
+  patch '/profile/:id', to: 'users#update'
+
   
   # get 'sessions/create'
   # get 'sessions/destroy'
