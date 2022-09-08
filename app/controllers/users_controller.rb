@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     end
 
     def update
-        @user.update!(user_params)
+        @user.update!(bio: params[:bio])
         render json: @user, status: :accepted
     end
 

@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   delete '/posts/:id', to: 'posts#destroy'
   post '/login', to: 'sessions#create'
   delete "/logout", to: "sessions#destroy"
+  get '/profile', to: 'users#show'
   post '/profile', to: 'users#create'
-  put '/profile/:id', to: 'users#update'
+  patch '/profile/:id', to: 'users#update'
 
   
   # get 'sessions/create'
