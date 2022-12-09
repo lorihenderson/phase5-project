@@ -1,11 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :user_authorized, only: [:create]
 
-  def click
-    session[:click] ||= 0
-    session[:click] += 1
-  end
-
   # post '/login'
   def create
     user = User.find_by_username(params[:username])
